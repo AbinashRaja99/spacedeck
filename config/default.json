@@ -1,0 +1,31 @@
+{
+  "team_name": "My Open Spacedeck",
+  "contact_email": "support@example.org",
+
+  "endpoint": "http://localhost:9666",
+  "invite_code": "top-sekrit",
+
+  "storage_region": "eu-central-1",
+
+  "storage_bucket": "my_spacedeck_bucket",
+  "storage_cdn": "/storage",
+  "storage_local_path": "./storage",
+  "storage_local_db": "./database.sqlite",
+
+  "redis_mock": true,
+  "mongodb_host": "localhost",
+  "redis_host": "localhost",
+
+  "google_access" : "",
+  "google_secret" : "",
+  "admin_pass": "very_secret_admin_password",
+  "phantom_api_secret": "very_secret_phantom_password",
+
+  "mail_provider": "smtp",
+  "mail_smtp_host": "your.smtp.host",
+  "mail_smtp_port": 465,
+  "mail_smtp_secure": true,
+  "mail_smtp_require_tls": true,
+  "mail_smtp_user": "your.smtp.user",
+  "mail_smtp_pass": "your.secret.smtp.password"
+}

@@ -1,0 +1,88 @@
+<div class="modal" v-if="active_modal == 'comment' && access_settings_space" v-cloak>
+  <div class="modal-wrapper">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width:550px">
+        <div class="modal-header" style="padding-bottom:0">
+          <h3 class="text-left">Comments</h3>
+          <button type="button" class="btn btn-icon btn-light btn-round close" v-on:click="close_comments()">
+            <span class="icon icon-cross-1"></span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-section" style="padding-top:0;padding-bottom:20px"> 
+
+            <style>
+              #CommentMsg{
+                width:450px;
+              }
+              .commentBox{
+                height: 350px;
+                /*background-color: red;*/
+                /*overflow: scroll;*/
+                overflow-y:auto;
+              }
+              ::-webkit-scrollbar {
+                width: 5px;
+              }
+
+              /* Track */
+              ::-webkit-scrollbar-track {
+                background: #f1f1f1; 
+              }
+               
+              /* Handle */
+              ::-webkit-scrollbar-thumb {
+                background: #888; 
+              }
+
+              /* Handle on hover */
+              ::-webkit-scrollbar-thumb:hover {
+                background: #555; 
+              }
+              
+            </style>
+            <script>
+              function search(ele) {
+                  if(event.key === 'Enter') {
+                      console.log("enter is pressed");
+                      document.getElementById("btn12").click();
+                      document.getElementById("CommentMsg").value="";
+                  }
+              }
+            </script>
+            <div class="commentBox" id="v-for-object">
+              <div v-for="value in comments">
+                    <div>
+                      <span style="font-size:17px;font-weight: bold;">{{value.editor_name}}</span>
+                      <span style="font-size:12px;color:#606060">{{value.createdAt.replace("T", " ").slice(0, 16)}}</span>
+                      <div>
+                        <span style="font-size:16px;">{{value.message}}</span>
+                        <span v-if="active_comment_userid == value.user_id" style="float:right;">
+                          <img style="width:24px;" src="../images/delete.png" v-on:click="delete_comments(value._id)"/>
+                          <!-- <button >delete</button> -->
+                          &nbsp;
+                        </span>
+                      </div>
+                      <div>
+                        <span v-if="value.like_count!=0" style="color:blue;">{{value.like_count}}</span>
+                        <span v-if="!value.liked_by.includes(active_comment_userid)"><img style="width:20px;" src="../images/like.png" v-on:click="like_comments(value._id)"/></span>
+                        <span v-if="value.liked_by.includes(active_comment_userid)"><img style="width:20px;" src="../images/liked.png" v-on:click="dislike_comments(value._id)"/></span>
+                      </div>
+                    </div>
+                <hr/>
+              </div>
+            </div>
+            <br/>
+            <center><textarea id="CommentMsg" value="" placeholder="Add Your Comment" onkeydown="search(this)"></textarea></center>
+            <span id="btn12" v-on:click="activate_comments()" onclick="putcomment()"></span>
+          <!-- <button class="btn" id='clear'>Cancel</button> -->
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="modal" v-if="active_modal == 'result' && access_settings_space" v-cloak>
+  <div class="modal-wrapper">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width:850px">
+        <div class="modal-header" style="padding-bottom:0">
+          <h2 class="text-left">Top Voted Designs</h2>
+          <button type="button" class="btn btn-icon btn-light btn-round close" v-on:click=" close_modal()">
+            <span class="icon icon-cross-1"></span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-section" style="padding-top:0;padding-bottom:20px">
+       
+            <style>
+              .zoomimg{width: 500px;
+              height: 400px}
+              .zoomimg:hover {
+                -ms-transform: scale(1.25); /* IE 9 */
+                -webkit-transform: scale(1.25); /* Safari 3-8 */
+                transform: scale(1.25); 
+              }
+            </style>
+     
+            <div id="v-for-object">
+              <div v-for="value in winner">
+                <h4><span style="color: green;">{{ value.name }}</span>, has secured highest vote count of  &nbsp;<span style="color: green;">{{ value.vote_count}}</span>  for his design</h4> <hr/>
+                <center><img class="zoomimg" v-bind:src=value.thumbnail_url alt="image"/></center>
+                <hr/>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
