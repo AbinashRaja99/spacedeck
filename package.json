@@ -19,7 +19,7 @@
     "cookie-parser": "~1.4.3",
     "execSync": "latest",
     "express": "^4.16.4",
-    "file-type": "^7.6.0",
+    "file-type": "^16.5.4",
     "glob": "7.1.1",
     "gm": "^1.23.1",
     "gulp": "^4.0.2",
